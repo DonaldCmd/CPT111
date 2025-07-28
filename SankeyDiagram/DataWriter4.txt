@@ -1,0 +1,26 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class DataWriter4 {
+    public static void main(String[] args) {
+        String[][] Data = {
+                {"Year","1"},
+                {"Invest","4300"},
+                {"Sales","2400"},
+                {"Profit","2200"}
+        };
+
+        File file = new File("source.txt");
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
+            for (String[] data : Data) {
+                bw.write(data[0] + "," + data[1]);
+                bw.newLine();
+            }
+            System.out.println("Data written to source.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
